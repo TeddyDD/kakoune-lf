@@ -6,14 +6,16 @@
 
 ## Installation
 
-1. Load Kakoune plugin
+1. Install `hatch-terminal` from [Kakoune-extra](https://github.com/lenormf/kakoune-extra)
+
+2. Load Kakoune plugin
 
 You can either:
 
 - load `lf.kak` from your kakrc: `source path/to/lf.kak`
 - put `lf.kak` in your autoloads directory `~/.config/kak/autoload/`
 
-2. Add this snippet to lf config file: `~/.config/lf/lfrc`
+3. Add this snippet to lf config file: `~/.config/lf/lfrc`
 
 ```
 # Kakoune integration
