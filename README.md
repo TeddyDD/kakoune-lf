@@ -36,7 +36,7 @@ cmd kak-edit ${{
 
 ## Usage
 
-Open lf with `:lf` command. Browse files like usually. Open files with `l` key.
+Open lf with `:lf` command. Browse files as usual. Open files with `l` key.
 
 ## TODO
 
