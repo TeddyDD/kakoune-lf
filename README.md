@@ -29,7 +29,16 @@ cmd kak-edit ${{
 		lf -remote "send $id set nopreview"
 		lf -remote "send $id set ratios 1"
 		lf -remote "send $id cmd open-file :kak-edit"
+		lf -remote "send $id map q :kak-exit-hook"
+
+		echo "eval -client $kak_client set-option window lf_id $id" | kak -p "$kak_session"
 	fi
+}}
+
+cmd kak-exit-hook ${{
+	# rest lf_id in Kakoune
+	echo "eval -client $kak_client set-option window lf_id ''" | kak -p "$kak_session"
+	lf -remote "send $id quit"
 }}
 
 ```
