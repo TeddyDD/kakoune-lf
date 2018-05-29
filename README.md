@@ -40,10 +40,5 @@ Open lf with `:lf` command. Browse files as usual. Open files with `l` key.
 
 ## TODO
 
-- [ ] check file type to avoid binary files
-- [ ] investigate `-selection-path` option for opening multiple files at once
-- [ ] cd Kakoune to selected directory
-- [ ] bidirectional integration (example: Kakoune as preview for files,
-    show folder containing file from grep search etc.)
-
+Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
 
