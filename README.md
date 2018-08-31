@@ -28,7 +28,7 @@ cmd kak-edit ${{
 	if [ "$KAKLF" = "yes" ]; then
 		lf -remote "send $id set nopreview"
 		lf -remote "send $id set ratios 1"
-		lf -remote "send $id cmd open-file :kak-edit"
+		lf -remote "send $id cmd open :kak-edit"
 		lf -remote "send $id map q :kak-exit-hook"
 
 		echo "eval -client $kak_client set-option window lf_id $id" | kak -p "$kak_session"
