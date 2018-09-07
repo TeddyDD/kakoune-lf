@@ -51,3 +51,10 @@ Open lf with `:lf` command. Browse files as usual. Open files with `l` key.
 
 Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
 
+
+## Changelog
+
+- 0.1 2018-09-07
+	- initial release
+	- Kakoune v2018.09.04
+
