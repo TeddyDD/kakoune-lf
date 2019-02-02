@@ -70,7 +70,7 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
 - 0.1 2018-09-07:
 	- initial release
 	- Kakoune v2018.09.04
-- master:
+- 0.2 2019-02-02:
 	- **Kakoune v2019.01.20**
 	- **lf r9**
 	- _CHANGE_ update README to new format
