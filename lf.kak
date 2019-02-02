@@ -23,6 +23,17 @@ hook global KakEnd .* %{
 	try %{ lf-send-command 'quit' }
 }
 
+define-command lf -docstring 'Open/close lf as file browser' %{
+    evaluate-commands %sh{
+		if [ "$kak_opt_lf_id" = "none" ]; then
+			echo "$kak_opt_lf_terminal_cmd"
+		else
+			echo "lf-send-command 'kak-exit-hook'"
+		fi
+    }
+}
+
+define-command -hidden lf-spawn-new %{
 	hatch-terminal %{
 		env KAKLF="yes" lf $(basename $kak_buffile)
 	}
