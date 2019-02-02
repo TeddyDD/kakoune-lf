@@ -8,6 +8,10 @@ kak_client
 'lf-spawn-new' is used by default, feel free to override it" \
 str lf_terminal_cmd lf-spawn-new
 
+hook global KakEnd .* %{
+	try %{ lf-send-command 'quit' }
+}
+
 	hatch-terminal %{
 		env KAKLF="yes" lf $(basename $kak_buffile)
 	}
