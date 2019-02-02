@@ -1,60 +1,81 @@
 # Kakoune lf
 
-[LF](https://github.com/gokcehan/lf) as file browser for Kakoune
+[lf] as file browser for Kakoune
 
 ![screenshot](screen.png)
 
 ## Installation
 
-1. Install `hatch-terminal` from [Kakoune-extra](https://github.com/lenormf/kakoune-extra)
+You have to have lf executable in PATH.
 
-2. Load Kakoune plugin
+### Dependencies
 
-You can either:
+**Only last stable versions of Kakoune and lf are supported**
 
+- [lf][lf] file manager
+- `hatch-terminal` command from [Kakoune-extra]. Note: this is optional,
+  see *lf_terminal_cmd*.
+
+### Installation
+
+1. Install Kakoune plugin. Any of the following methods will do
+
+- use [plug.kak] plugin manager
 - load `lf.kak` from your kakrc: `source path/to/lf.kak`
 - put `lf.kak` in your autoloads directory `~/.config/kak/autoload/`
 
-3. Add this snippet to lf config file: `~/.config/lf/lfrc`
+2. Add this snippet to lf config file: `~/.config/lf/lfrc`
 
 ```
 # Kakoune integration
 
-cmd kak-edit ${{
-    echo "eval -client $kak_client edit $f" | kak -p "$kak_session"
-}}
-
-%{{
-	if [ "$KAKLF" = "yes" ]; then
-		lf -remote "send $id set nopreview"
-		lf -remote "send $id set ratios 1"
-		lf -remote "send $id cmd open :kak-edit"
-		lf -remote "send $id map q :kak-exit-hook"
-
-		echo "eval -client $kak_client set-option window lf_id $id" | kak -p "$kak_session"
-	fi
-}}
-
-cmd kak-exit-hook ${{
-	# rest lf_id in Kakoune
-	echo "eval -client $kak_client set-option window lf_id ''" | kak -p "$kak_session"
+cmd kak-exit-hook &{{
+    echo "eval -client $kak_client set-option global lf_id none" | kak -p "$kak_session"
 	lf -remote "send $id quit"
 }}
 
+&{{
+	if [ "$KAKLF" = "yes" ]; then
+		echo "eval -client $kak_client set-option global lf_id %{$id}" | kak -p "$kak_session"
+	fi
+}}
 ```
 
 ## Usage
 
 Open lf with `:lf` command. Browse files as usual. Open files with `l` key.
 
+You can close lf by pressing `q` in lf window or by calling `:lf` command
+in Kakoune.
+
+## Options
+
+- `lf_terminal_cmd` name of Kakoune command that will spawn terminal/tmux window
+  with lf. It *must* expose `$kak_session` and `$kak_client` environmental variables.
+  It also must set variable `KAKLF` to `yes`. By default it uses `hatch-terminal` command
+  from [Kakoune-extra]. I couldn't get it to work with build-in `terminal`
+  command, PRs welcome.
+
 ## TODO
 
 Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
 
-
 ## Changelog
 
-- 0.1 2018-09-07
+- 0.1 2018-09-07:
 	- initial release
 	- Kakoune v2018.09.04
+- master:
+	- **Kakoune v2019.01.20**
+	- **lf r9**
+	- _CHANGE_ update README to new format
+	- _CHANGE_ lf works as a toggle
+	- _CHANGE_ reduce amount of configuration that has to be pasted in `lfrc`
+	- _CHANGE_ to new repository layout
+	- _ADD_ `lf_terminal_cmd` option for custom spawn command
 
+
+[lf]: https://github.com/gokcehan/lf
+[Kakoune]: http://kakoune.org/
+[Kakoune-extra]: https://github.com/lenormf/kakoune-extra
+[plug.kak]: https://github.com/andreyorst/plug.kak
