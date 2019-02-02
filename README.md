@@ -43,10 +43,15 @@ cmd kak-exit-hook &{{
 
 ## Usage
 
-Open lf with `:lf` command. Browse files as usual. Open files with `l` key.
+Open/close lf with `:lf` command. 
 
-You can close lf by pressing `q` in lf window or by calling `:lf` command
-in Kakoune.
+Lf keys:
+- up / down <kbd>j</kbd> <kbd>k</kbd>
+- parent directory <kbd>h</kbd>
+- open file in Kakoune <kbd>l</kbd>
+- quit <kbd>q</kbd>
+
+See lf documentation for more.
 
 ## Options
 
