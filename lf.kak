@@ -8,6 +8,17 @@ kak_client
 'lf-spawn-new' is used by default, feel free to override it" \
 str lf_terminal_cmd lf-spawn-new
 
+# When lf_id is set, configure lf instance
+hook global GlobalSetOption 'lf_id=\d+' %{
+	lf-send-command 'cmd kak-edit ${{ echo "eval -client $kak_client edit $f" | kak -p "$kak_session" }}'
+	lf-send-command 'cmd kak-cmd &{{ echo "eval -client $kak_client $*" | kak -p $kak_session }}'
+
+	lf-send-command 'set nopreview'
+	lf-send-command 'set ratios 1'
+	lf-send-command 'cmd open :kak-edit'
+	lf-send-command 'map q :kak-exit-hook'
+}
+
 hook global KakEnd .* %{
 	try %{ lf-send-command 'quit' }
 }
