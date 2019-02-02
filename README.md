@@ -75,8 +75,10 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
 	- **lf r9**
 	- _CHANGE_ update README to new format
 	- _CHANGE_ lf works as a toggle
-	- _CHANGE_ reduce amount of configuration that has to be pasted in `lfrc`
-	- _CHANGE_ to new repository layout
+	- __CHANGE__ reduce amount of configuration that has to be pasted in
+	`lfrc` (**breaking** requires manual update of `lfrc`)
+	- __CHANGE__ to new repository layout (**breaking** update path in
+	`kakrc`)
 	- _ADD_ `lf_terminal_cmd` option for custom spawn command
 
 
