@@ -12,3 +12,15 @@ str lf_terminal_cmd lf-spawn-new
 		env KAKLF="yes" lf $(basename $kak_buffile)
 	}
 }
+
+define-command -hidden lf-send-command \
+    -params 1.. \
+	-docstring 'send command to currently attached lf instance' %{
+	evaluate-commands %sh{
+    	if [ -n "$kak_opt_lf_id" ]; then
+        	lf -remote "send $kak_opt_lf_id $*"
+        else
+        	echo fail "No lf session attached"
+    	fi
+	}
+}
