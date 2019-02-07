@@ -48,7 +48,9 @@ Open/close lf with `:lf` command.
 Lf keys:
 - up / down <kbd>j</kbd> <kbd>k</kbd>
 - parent directory <kbd>h</kbd>
-- open file in Kakoune <kbd>l</kbd>
+- open file under cursor (and selected files if any) in Kakoune <kbd>l</kbd>
+- select file <kbd>space</kbd>
+- unselect all files <kbd>u</kbd>
 - quit <kbd>q</kbd>
 
 See lf documentation for more.
@@ -82,6 +84,9 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
     - _ADD_ `lf_terminal_cmd` option for custom spawn command
 - master:
     - _CHANGE_ add hooks to `lf` group
+    - _ADD_ editorconfig
+    - _CHANGE_ format files in repo with editorconfig
+    - _ADD_ opening multiple files at once
 
 
 [lf]: https://github.com/gokcehan/lf
