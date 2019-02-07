@@ -1,4 +1,5 @@
 declare-option -hidden -docstring "id of currently active lf instance" str lf_id "none"
+declare-option -hidden str lf_tmp_file
 declare-option -docstring "Kakoune command used to spaw lf in terminal
 It has to spawn lf and export following enviroment varibles:
 KAKLF=yes
@@ -50,3 +51,17 @@ define-command -hidden lf-send-command \
         fi
     }
 }
+
+define-command -hidden lf-send-configuration \
+-params 1 \
+-docstring "send multiple lines of configuration to attached lf instance" %{
+evaluate-commands %sh{
+    tmp="$(mktemp ${TMPDIR:-/tmp}/kaklf.XXXXXXXXX)"
+    printf "set-option global lf_tmp_file '%s'\n" "$tmp"
+    printf '%s\n' "$*" > $tmp
+    printf 'lf-send-command "source %s"\n' "$tmp"
+}
+nop %sh{
+    rm "$kak_opt_lf_tmp_file"
+}}
+
