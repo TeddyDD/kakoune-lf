@@ -82,11 +82,12 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
     - __CHANGE__ to new repository layout (**breaking** update path in
     `kakrc`)
     - _ADD_ `lf_terminal_cmd` option for custom spawn command
-- master:
+- 0.3 2019-02-07:
     - _CHANGE_ add hooks to `lf` group
     - _ADD_ editorconfig
     - _CHANGE_ format files in repo with editorconfig
     - _ADD_ opening multiple files at once
+    - _FIX_ open paths with spaces
 
 
 [lf]: https://github.com/gokcehan/lf
