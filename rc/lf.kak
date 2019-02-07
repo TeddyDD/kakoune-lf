@@ -9,7 +9,7 @@ kak_client
 str lf_terminal_cmd lf-spawn-new
 
 # When lf_id is set, configure lf instance
-hook global GlobalSetOption 'lf_id=\d+' %{
+hook -group lf global GlobalSetOption 'lf_id=\d+' %{
 	lf-send-command 'cmd kak-edit ${{ echo "eval -client $kak_client edit $f" | kak -p "$kak_session" }}'
 	lf-send-command 'cmd kak-cmd &{{ echo "eval -client $kak_client $*" | kak -p $kak_session }}'
 
@@ -19,7 +19,7 @@ hook global GlobalSetOption 'lf_id=\d+' %{
 	lf-send-command 'map q :kak-exit-hook'
 }
 
-hook global KakEnd .* %{
+hook -group lf global KakEnd .* %{
 	try %{ lf-send-command 'quit' }
 }
 

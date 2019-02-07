@@ -80,6 +80,8 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
 	- __CHANGE__ to new repository layout (**breaking** update path in
 	`kakrc`)
 	- _ADD_ `lf_terminal_cmd` option for custom spawn command
+- master:
+	- _CHANGE_ add hooks to `lf` group
 
 
 [lf]: https://github.com/gokcehan/lf
