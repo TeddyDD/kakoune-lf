@@ -20,33 +20,33 @@ hook -group lf global GlobalSetOption 'lf_id=\d+' %{
 }
 
 hook -group lf global KakEnd .* %{
-	try %{ lf-send-command 'quit' }
+    try %{ lf-send-command 'quit' }
 }
 
 define-command lf -docstring 'Open/close lf as file browser' %{
     evaluate-commands %sh{
-		if [ "$kak_opt_lf_id" = "none" ]; then
-			echo "$kak_opt_lf_terminal_cmd"
-		else
-			echo "lf-send-command 'kak-exit-hook'"
-		fi
+        if [ "$kak_opt_lf_id" = "none" ]; then
+            echo "$kak_opt_lf_terminal_cmd"
+        else
+            echo "lf-send-command 'kak-exit-hook'"
+        fi
     }
 }
 
 define-command -hidden lf-spawn-new %{
-	hatch-terminal %{
-		env KAKLF="yes" lf $(basename $kak_buffile)
-	}
+    hatch-terminal %{
+        env KAKLF="yes" lf $(basename $kak_buffile)
+    }
 }
 
 define-command -hidden lf-send-command \
     -params 1.. \
-	-docstring 'send command to currently attached lf instance' %{
-	evaluate-commands %sh{
-    	if [ -n "$kak_opt_lf_id" ]; then
-        	lf -remote "send $kak_opt_lf_id $*"
+    -docstring 'send command to currently attached lf instance' %{
+    evaluate-commands %sh{
+        if [ -n "$kak_opt_lf_id" ]; then
+            lf -remote "send $kak_opt_lf_id $*"
         else
-        	echo fail "No lf session attached"
-    	fi
-	}
+            echo fail "No lf session attached"
+        fi
+    }
 }
