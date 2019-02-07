@@ -58,15 +58,16 @@ define-command -hidden lf-send-command \
 }
 
 define-command -hidden lf-send-configuration \
--params 1 \
--docstring "send multiple lines of configuration to attached lf instance" %{
-evaluate-commands %sh{
-    tmp="$(mktemp ${TMPDIR:-/tmp}/kaklf.XXXXXXXXX)"
-    printf "set-option global lf_tmp_file '%s'\n" "$tmp"
-    printf '%s\n' "$*" > $tmp
-    printf 'lf-send-command "source %s"\n' "$tmp"
+    -params 1 \
+    -docstring "send multiple lines of configuration to attached lf instance" %{
+    evaluate-commands %sh{
+        tmp="$(mktemp ${TMPDIR:-/tmp}/kaklf.XXXXXXXXX)"
+        printf "set-option global lf_tmp_file '%s'\n" "$tmp"
+        printf '%s\n' "$*" > $tmp
+        printf 'lf-send-command "source %s"\n' "$tmp"
+    }
+    nop %sh{
+        rm "$kak_opt_lf_tmp_file"
+    }
 }
-nop %sh{
-    rm "$kak_opt_lf_tmp_file"
-}}
 
