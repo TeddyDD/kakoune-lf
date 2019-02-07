@@ -13,7 +13,10 @@ str lf_terminal_cmd lf-spawn-new
 hook -group lf global GlobalSetOption 'lf_id=\d+' %{
     lf-send-configuration '
     cmd kak-edit &{{
-        echo "eval -client $kak_client edit $f" | kak -p "$kak_session"
+        for c in $fx
+        do
+            echo "evaluate-commands -client $kak_client %{edit ''$c''}" | kak -p "$kak_session"
+        done
     }}
     cmd kak-cmd &{{
         echo "evaluate-commands -client $kak_client $*" | kak -p $kak_session
