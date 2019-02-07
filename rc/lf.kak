@@ -16,7 +16,7 @@ hook -group lf global GlobalSetOption 'lf_id=\d+' %{
         echo "eval -client $kak_client edit $f" | kak -p "$kak_session"
     }}
     cmd kak-cmd &{{
-        echo "eval -client $kak_client $*" | kak -p $kak_session
+        echo "evaluate-commands -client $kak_client $*" | kak -p $kak_session
     }}
     set nopreview
     set ratios 1
