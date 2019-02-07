@@ -31,19 +31,19 @@ You have to have lf executable in PATH.
 
 cmd kak-exit-hook &{{
     echo "eval -client $kak_client set-option global lf_id none" | kak -p "$kak_session"
-	lf -remote "send $id quit"
+    lf -remote "send $id quit"
 }}
 
 &{{
-	if [ "$KAKLF" = "yes" ]; then
-		echo "eval -client $kak_client set-option global lf_id %{$id}" | kak -p "$kak_session"
-	fi
+    if [ "$KAKLF" = "yes" ]; then
+        echo "eval -client $kak_client set-option global lf_id %{$id}" | kak -p "$kak_session"
+    fi
 }}
 ```
 
 ## Usage
 
-Open/close lf with `:lf` command. 
+Open/close lf with `:lf` command.
 
 Lf keys:
 - up / down <kbd>j</kbd> <kbd>k</kbd>
@@ -68,23 +68,24 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
 ## Changelog
 
 - 0.1 2018-09-07:
-	- initial release
-	- Kakoune v2018.09.04
+    - initial release
+    - Kakoune v2018.09.04
 - 0.2 2019-02-02:
-	- **Kakoune v2019.01.20**
-	- **lf r9**
-	- _CHANGE_ update README to new format
-	- _CHANGE_ lf works as a toggle
-	- __CHANGE__ reduce amount of configuration that has to be pasted in
-	`lfrc` (**breaking** requires manual update of `lfrc`)
-	- __CHANGE__ to new repository layout (**breaking** update path in
-	`kakrc`)
-	- _ADD_ `lf_terminal_cmd` option for custom spawn command
+    - **Kakoune v2019.01.20**
+    - **lf r9**
+    - _CHANGE_ update README to new format
+    - _CHANGE_ lf works as a toggle
+    - __CHANGE__ reduce amount of configuration that has to be pasted in
+    `lfrc` (**breaking** requires manual update of `lfrc`)
+    - __CHANGE__ to new repository layout (**breaking** update path in
+    `kakrc`)
+    - _ADD_ `lf_terminal_cmd` option for custom spawn command
 - master:
-	- _CHANGE_ add hooks to `lf` group
+    - _CHANGE_ add hooks to `lf` group
 
 
 [lf]: https://github.com/gokcehan/lf
 [Kakoune]: http://kakoune.org/
 [Kakoune-extra]: https://github.com/lenormf/kakoune-extra
 [plug.kak]: https://github.com/andreyorst/plug.kak
+
