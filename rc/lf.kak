@@ -13,7 +13,7 @@ str lf_terminal_cmd lf-spawn-new
 hook -group lf global GlobalSetOption 'lf_id=\d+' %{
     lf-send-configuration '
     cmd kak-exit-hook &{{
-        echo "eval -client $KAK_CLIENT set-option global lf_id none" | kak -p "$KAK_SESSION"
+        echo "eval -client $kak_client set-option global lf_id none" | kak -p "$kak_session"
         lf -remote "send $id quit"
     }}
     cmd kak-edit &{{
