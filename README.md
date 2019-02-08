@@ -29,11 +29,6 @@ You have to have lf executable in PATH.
 ```
 # Kakoune integration
 
-cmd kak-exit-hook &{{
-    echo "eval -client $kak_client set-option global lf_id none" | kak -p "$kak_session"
-    lf -remote "send $id quit"
-}}
-
 &{{
     if [ "$KAKLF" = "yes" ]; then
         echo "eval -client $kak_client set-option global lf_id %{$id}" | kak -p "$kak_session"

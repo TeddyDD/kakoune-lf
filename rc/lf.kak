@@ -12,6 +12,10 @@ str lf_terminal_cmd lf-spawn-new
 # When lf_id is set, configure lf instance
 hook -group lf global GlobalSetOption 'lf_id=\d+' %{
     lf-send-configuration '
+    cmd kak-exit-hook &{{
+        echo "eval -client $KAK_CLIENT set-option global lf_id none" | kak -p "$KAK_SESSION"
+        lf -remote "send $id quit"
+    }}
     cmd kak-edit &{{
         for c in $fx
         do
