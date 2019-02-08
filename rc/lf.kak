@@ -15,7 +15,7 @@ hook -group lf global GlobalSetOption 'lf_id=\d+' %{
     cmd kak-edit &{{
         for c in $fx
         do
-            echo "evaluate-commands -client $kak_client %{edit ''$c''}" | kak -p "$kak_session"
+            [ "$(file -b --mime-type "$c" | cut -d/ -f1)" = "text" ] && echo "evaluate-commands -client $kak_client %{edit ''$c''}" | kak -p "$kak_session"
         done
     }}
     cmd kak-cmd &{{
