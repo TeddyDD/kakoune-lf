@@ -16,6 +16,7 @@ You have to have lf executable in PATH.
 - `hatch-terminal` command from [Kakoune-extra]. Note: this is optional,
   see *lf_terminal_cmd*.
 - `file` command
+- `realpath` command (from GNU coreutils, you probably have this)
 
 ### Installation
 
