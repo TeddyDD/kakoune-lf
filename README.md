@@ -60,8 +60,7 @@ See lf documentation for more.
 - `lf_terminal_cmd` name of Kakoune command that will spawn terminal/tmux window
   with lf. It *must* expose `$kak_session` and `$kak_client` environmental variables.
   It also must set variable `KAKLF` to `yes`. By default it uses `hatch-terminal` command
-  from [Kakoune-extra]. I couldn't get it to work with build-in `terminal`
-  command, PRs welcome.
+  from [Kakoune-extra].
 
 ## TODO
 
