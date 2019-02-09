@@ -83,7 +83,8 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
     - _CHANGE_ format files in repo with editorconfig
     - _ADD_ opening multiple files at once
     - _FIX_ open paths with spaces
-
+- master:
+    - __CHANGE__ move `kak-exit-hook` to Kakoune (**breaking** requires manual update of `lfrc`)
 
 [lf]: https://github.com/gokcehan/lf
 [Kakoune]: http://kakoune.org/
