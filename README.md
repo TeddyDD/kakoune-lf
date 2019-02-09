@@ -13,8 +13,6 @@ You have to have lf executable in PATH.
 **Only last stable versions of Kakoune and lf are supported**
 
 - [lf][lf] file manager
-- `hatch-terminal` command from [Kakoune-extra]. Note: this is optional,
-  see *lf_terminal_cmd*.
 
 ### Installation
 
@@ -52,11 +50,12 @@ See lf documentation for more.
 
 ## Options
 
-- `lf_terminal_cmd` name of Kakoune command that will spawn terminal/tmux window
-  with lf. It *must* expose `$kak_session` and `$kak_client` environmental variables.
-  It also must set variable `KAKLF` to `yes`. By default it uses `hatch-terminal` command
-  from [Kakoune-extra]. I couldn't get it to work with build-in `terminal`
-  command, PRs welcome.
+- `lf_terminal_cmd` name of Kakoune command that will spawn terminal/tmux
+  window with lf. It *must* expose `$kak_session` and `$kak_client`
+  environmental variables.  It also must set variable `KAKLF` to `yes`. By
+  default it uses `terminal` (build-in) command. See `lf-spawn-new` form
+  `rc/lf.kak` for reference.
+
 
 ## TODO
 
@@ -85,6 +84,7 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
     - _FIX_ open paths with spaces
 - master:
     - __CHANGE__ move `kak-exit-hook` to Kakoune (**breaking** requires manual update of `lfrc`)
+    - _CHANGE_ remove `hatch_terminal` dependency, use built-in `terminal` command by default
     - _ADD_ display number of opened files in lf status line
 
 [lf]: https://github.com/gokcehan/lf
