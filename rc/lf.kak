@@ -50,9 +50,7 @@ define-command lf -docstring 'Open/close lf as file browser' %{
 }
 
 define-command -hidden lf-spawn-new %{
-    hatch-terminal %{
-        env KAKLF="yes" lf $(basename $kak_buffile)
-    }
+    terminal sh -c "env KAKLF=yes kak_session=%val{session} kak_client=%val{client} lf ""$(dirname ""%val{buffile}"")"""
 }
 
 define-command -hidden lf-send-command \
