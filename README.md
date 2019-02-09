@@ -1,6 +1,7 @@
 # Kakoune lf
 
-[lf] as file browser for Kakoune
+kakoune-lf is plugin for [Kakoune] text editor. It integrates [lf file manager]
+as sidebar file browser.
 
 ![screenshot](screen.png)
 
