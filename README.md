@@ -85,6 +85,7 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
     - _FIX_ open paths with spaces
 - master:
     - __CHANGE__ move `kak-exit-hook` to Kakoune (**breaking** requires manual update of `lfrc`)
+    - _ADD_ display number of opened files in lf status line
 
 [lf]: https://github.com/gokcehan/lf
 [Kakoune]: http://kakoune.org/

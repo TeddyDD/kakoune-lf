@@ -16,11 +16,14 @@ hook -group lf global GlobalSetOption 'lf_id=\d+' %{
         echo "eval -client $kak_client set-option global lf_id none" | kak -p "$kak_session"
         lf -remote "send $id quit"
     }}
-    cmd kak-edit &{{
+    cmd kak-edit %{{
+        cnt=0
         for c in $fx
         do
-            echo "evaluate-commands -client $kak_client %{edit ''$c''}" | kak -p "$kak_session"
+            echo "evaluate-commands -client $kak_client %{edit ''$c''}" | kak -p "$kak_session" 2>&1 /dev/null
+            cnt=$((cnt+1))
         done
+        echo "$cnt files opened"
     }}
     cmd kak-cmd &{{
         echo "evaluate-commands -client $kak_client $*" | kak -p $kak_session
