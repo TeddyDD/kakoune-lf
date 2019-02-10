@@ -39,6 +39,9 @@ You have to have lf executable in PATH.
 
 Open/close lf with `:lf` command.
 
+`:lf-follow` opens directory containing current buffer (or Kakoune's CWD if
+buffer is not existing file)
+
 Lf keys:
 - up / down <kbd>j</kbd> <kbd>k</kbd>
 - parent directory <kbd>h</kbd>
@@ -56,7 +59,9 @@ See lf documentation for more.
   environmental variables.  It also must set variable `KAKLF` to `yes`. By
   default it uses `terminal` (build-in) command. See `lf-spawn-new` form
   `rc/lf.kak` for reference.
-- `lf_update_path` option to enable/disable changing lf path on kakoune buffer change.
+- `lf_follow` option to enable/disable changing lf path on Kakoune buffer change.
+- `lf_openables` list of regexes that has to match mimetype of file opened from lf.
+  This prevents opening binary files by accident.
 
 ## TODO
 
@@ -87,6 +92,9 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
     - __CHANGE__ move `kak-exit-hook` to Kakoune (**breaking** requires manual update of `lfrc`)
     - _CHANGE_ remove `hatch_terminal` dependency, use built-in `terminal` command by default
     - _ADD_ display number of opened files in lf status line
+    - _ADD_ `:lf-follow` command and `lf_follow` option that look for
+      current opened buffer in lf
+    - _ADD_ mimetype check to avoid opening binary files
 
 [lf]: https://github.com/gokcehan/lf
 [Kakoune]: http://kakoune.org/
