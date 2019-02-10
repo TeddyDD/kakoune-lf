@@ -56,7 +56,7 @@ See lf documentation for more.
   environmental variables.  It also must set variable `KAKLF` to `yes`. By
   default it uses `terminal` (build-in) command. See `lf-spawn-new` form
   `rc/lf.kak` for reference.
-
+- `lf_update_path` option to enable/disable changing lf path on kakoune buffer change.
 
 ## TODO
 
