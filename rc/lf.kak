@@ -43,12 +43,19 @@ hook -group lf global GlobalSetOption 'lf_id=\d+' %{
     }
 }
 
+
+define-command lf-follow -docstring 'find directory of current buffer in lf' %{
+    lf-set-start-dir
+    lf-send-command "cd '%opt{lf_start_dir}'"
+    lf-send-command "select '%val{buffile}'"
+}
+
 hook -group lf global GlobalSetOption 'lf_update_path=(true|false)' %{ evaluate-commands %sh{
     case $kak_opt_lf_update_path in
         true)
             echo '
             hook -group lf-update-path global WinDisplay .* %{
-                lf-send-command "select %val{buffile}"
+                lf-follow
             }' ;;
         false) echo 'remove-hooks global lf-update-path' ;;
     esac
