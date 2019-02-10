@@ -1,5 +1,6 @@
 declare-option -hidden -docstring "id of currently active lf instance" str lf_id "none"
 declare-option -hidden str lf_tmp_file
+declare-option -hidden str lf_start_dir
 declare-option -docstring "Kakoune command used to spaw lf in terminal
 It has to spawn lf and export following enviroment varibles:
 KAKLF=yes
@@ -55,8 +56,23 @@ define-command lf -docstring 'Open/close lf as file browser' %{
     }
 }
 
+# Helper that sets lf_start_dir to path that contains buffile
+# If buffile does not exsists it sets lf_start_dir to Kakoune's pwd
+define-command -hidden lf-set-start-dir %{
+    evaluate-commands %sh{
+        d="$kak_buffile"
+		if [ -e "$d" ]; then
+			d="$(echo "${kak_buffile%/*}" | sed 's! !\ !')"
+			printf 'set-option global lf_start_dir %%{%s}\n' "$d"
+		else
+			printf '%s\n' "set-option global lf_start_dir %{$(pwd | sed 's! !\ !')}"
+		fi
+    }
+}
+
 define-command -hidden lf-spawn-new %{
-    terminal sh -c "env KAKLF=yes kak_session=%val{session} kak_client=%val{client} lf ""$(dirname ""%val{buffile}"")"""
+	lf-set-start-dir
+    terminal sh -c "env KAKLF=yes kak_session=%val{session} kak_client=%val{client} lf ""%opt{lf_start_dir}"""
 }
 
 define-command -hidden lf-send-command \
