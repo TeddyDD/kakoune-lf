@@ -80,17 +80,17 @@ define-command lf -docstring 'Open/close lf as file browser' %{
 define-command -hidden lf-set-start-dir %{
     evaluate-commands %sh{
         d="$kak_buffile"
-		if [ -e "$d" ]; then
-			d="$(echo "${kak_buffile%/*}" | sed 's! !\ !')"
-			printf 'set-option global lf_start_dir %%{%s}\n' "$d"
-		else
-			printf '%s\n' "set-option global lf_start_dir %{$(pwd | sed 's! !\ !')}"
-		fi
+        if [ -e "$d" ]; then
+            d="$(echo "${kak_buffile%/*}" | sed 's! !\ !')"
+            printf 'set-option global lf_start_dir %%{%s}\n' "$d"
+        else
+            printf '%s\n' "set-option global lf_start_dir %{$(pwd | sed 's! !\ !')}"
+        fi
     }
 }
 
 define-command -hidden lf-spawn-new %{
-	lf-set-start-dir
+    lf-set-start-dir
     terminal sh -c "env KAKLF=yes kak_session=%val{session} kak_client=%val{client} lf ""%opt{lf_start_dir}"""
 }
 
