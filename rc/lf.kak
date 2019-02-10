@@ -10,7 +10,7 @@ kak_client
 'lf-spawn-new' is used by default, feel free to override it" \
 str lf_terminal_cmd lf-spawn-new
 declare-option -docstring "List of regexes, that will be matched against a file's mimetype before opening" str-list lf_openables 'text/.*' 'application/json'
-declare-option -docstring 'Should lf jump to the file opened in kakoune' bool lf_update_path false
+declare-option -docstring 'Should lf jump to the file opened in kakoune' bool lf_follow false
 
 # When lf_id is set, configure lf instance
 hook -group lf global GlobalSetOption 'lf_id=\d+' %{
@@ -50,8 +50,8 @@ define-command lf-follow -docstring 'find directory of current buffer in lf' %{
     lf-send-command "select '%val{buffile}'"
 }
 
-hook -group lf global GlobalSetOption 'lf_update_path=(true|false)' %{ evaluate-commands %sh{
-    case $kak_opt_lf_update_path in
+hook -group lf global GlobalSetOption 'lf_follow=(true|false)' %{ evaluate-commands %sh{
+    case $kak_opt_lf_follow in
         true)
             echo '
             hook -group lf-update-path global WinDisplay .* %{
