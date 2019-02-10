@@ -62,7 +62,7 @@ define-command -hidden lf-set-start-dir %{
     evaluate-commands %sh{
         d="$kak_buffile"
 		if [ -e "$d" ]; then
-			d="$(echo ${kak_buffile%/*} | sed 's! !\ !')"
+			d="$(echo "${kak_buffile%/*}" | sed 's! !\ !')"
 			printf 'set-option global lf_start_dir %%{%s}\n' "$d"
 		else
 			printf '%s\n' "set-option global lf_start_dir %{$(pwd | sed 's! !\ !')}"
