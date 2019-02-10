@@ -56,19 +56,22 @@ define-command lf -docstring 'Open/close lf as file browser' %{
     }
 }
 
-define-command -hidden lf-spawn-new %{
+# Helper that sets lf_start_dir to path that contains buffile
+# If buffile does not exsists it sets lf_start_dir to Kakoune's pwd
+define-command -hidden lf-set-start-dir %{
     evaluate-commands %sh{
         d="$kak_buffile"
 		if [ -e "$d" ]; then
 			d="$(echo ${kak_buffile%/*} | sed 's! !\ !')"
-			echo echo -debug "buffile exsits, setting $d"
 			printf 'set-option global lf_start_dir %%{%s}\n' "$d"
 		else
-			echo echo -debug "no buffile, setting: $(pwd | sed 's! !\ !') ||"
 			echo "set-option global lf_start_dir %{$(pwd | sed 's! !\ !')}"
 		fi
-		echo echo -debug "$d"
     }
+}
+
+define-command -hidden lf-spawn-new %{
+	lf-set-start-dir
     terminal sh -c "env KAKLF=yes kak_session=%val{session} kak_client=%val{client} lf ""%opt{lf_start_dir}"""
 }
 
