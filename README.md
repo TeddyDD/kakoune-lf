@@ -89,6 +89,7 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
     - _ADD_ opening multiple files at once
     - _FIX_ open paths with spaces
 - master:
+    - **lf r10**
     - __CHANGE__ move `kak-exit-hook` to Kakoune (**breaking** requires manual update of `lfrc`)
     - _CHANGE_ remove `hatch_terminal` dependency, use built-in `terminal` command by default
     - _ADD_ display number of opened files in lf status line
