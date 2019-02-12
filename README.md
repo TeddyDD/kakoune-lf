@@ -94,7 +94,7 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
     - _ADD_ `:lf-follow` command and `lf_follow` option that look for
       current opened buffer in lf
     - _ADD_ mimetype check to avoid opening binary files
-    - _ADD_ command for synchronizing CWD (`lf-cd` and `kak-cd`)
+    - _ADD_ command for synchronizing CWD (`lf-cwd-sync`)
 
 [lf]: https://github.com/gokcehan/lf
 [Kakoune]: http://kakoune.org/
