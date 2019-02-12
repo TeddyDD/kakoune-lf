@@ -43,10 +43,9 @@ See lf documentation for more.
 ## Options
 
 - `lf_terminal_cmd` name of Kakoune command that will spawn terminal/tmux
-  window with lf. It *must* expose `$kak_session` and `$kak_client`
-  environmental variables.  It also must set variable `KAKLF` to `yes`. By
-  default it uses `terminal` (build-in) command. See `lf-spawn-new` form
-  `rc/lf.kak` for reference.
+  window with lf. It *must* expose `$kak_session` and `$kak_client` environmental
+  variables. By default it uses `terminal` (build-in) command. See `lf-spawn-new`
+  form `rc/lf.kak` for reference.
 - `lf_follow` option to enable/disable changing lf path on Kakoune buffer change.
 - `lf_openables` list of regexes that has to match mimetype of file opened from lf.
   This prevents opening binary files by accident.
