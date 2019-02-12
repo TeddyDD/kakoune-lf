@@ -25,22 +25,32 @@ You have to have lf executable in PATH.
 
 ## Usage
 
-Open/close lf with `:lf` command.
+### Kakoune commands
 
-`:lf-follow` opens directory containing current buffer (or Kakoune's CWD if
-buffer is not existing file)
+- Open/close lf with `:lf` command.
 
-Lf keys:
+- `:lf-follow` opens directory containing current buffer (or Kakoune's CWD if
+buffer is not existing file) in runing lf instance
+
+- `:lf-sync-cwd` opens Kakoune CWD in runing lf instance
+
+### lf keys
+
 - up / down <kbd>j</kbd> <kbd>k</kbd>
 - parent directory <kbd>h</kbd>
 - open file under cursor (and selected files if any) in Kakoune <kbd>l</kbd>
 - select file <kbd>space</kbd>
 - unselect all files <kbd>u</kbd>
+- enter command <kbd>:</kbd>
 - quit <kbd>q</kbd>
 
 See lf documentation for more.
 
-## Options
+### lf commands
+
+- `:lf-sync-cwd` change Kakoune's CWD to currently open directory
+
+## Kakoune options
 
 - `lf_terminal_cmd` name of Kakoune command that will spawn terminal/tmux
   window with lf. It *must* expose `$kak_session` and `$kak_client` environmental
@@ -84,6 +94,7 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
     - _ADD_ `:lf-follow` command and `lf_follow` option that look for
       current opened buffer in lf
     - _ADD_ mimetype check to avoid opening binary files
+    - _ADD_ command for synchronizing CWD (`lf-cd` and `kak-cd`)
 
 [lf]: https://github.com/gokcehan/lf
 [Kakoune]: http://kakoune.org/

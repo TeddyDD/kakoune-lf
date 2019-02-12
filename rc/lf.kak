@@ -35,6 +35,10 @@ hook -group lf global GlobalSetOption 'lf_id=\d+' %{
         cmd kak-cmd &{{
             echo "evaluate-commands -client $kak_client $*" | kak -p $kak_session
         }}
+        cmd lf-sync-cwd &{{
+            dir="$(dirname ""$f"")"
+            echo "evaluate-commands -client $kak_client ''lf-join-cd %{$dir}''" | kak -p $kak_session
+        }}
         set nopreview
         set ratios 1
         cmd open :kak-edit
@@ -43,11 +47,18 @@ hook -group lf global GlobalSetOption 'lf_id=\d+' %{
     }
 }
 
+define-command -hidden -params 1.. lf-join-cd %{
+    cd "%sh{echo $* | sed 's! !\ !'}"
+}
 
 define-command lf-follow -docstring 'find directory of current buffer in lf' %{
     lf-set-start-dir
     lf-send-command "cd '%opt{lf_start_dir}'"
     lf-send-command "select '%val{buffile}'"
+}
+
+define-command lf-sync-cwd -docstring 'open Kakoune''s CWD in running lf instance' %{
+	lf-send-command "cd '%sh{pwd}'"
 }
 
 hook -group lf global GlobalSetOption 'lf_follow=(true|false)' %{ evaluate-commands %sh{
