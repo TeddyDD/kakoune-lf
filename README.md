@@ -85,7 +85,7 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
     - _CHANGE_ format files in repo with editorconfig
     - _ADD_ opening multiple files at once
     - _FIX_ open paths with spaces
-- master:
+- 0.9 2019-02-12:
     - **lf r10**
     - __CHANGE__ move all configuration to Kakoune (**breaking** requires
       manual update of `lfrc`). You can use this plugin without modyfing `lfrc`
