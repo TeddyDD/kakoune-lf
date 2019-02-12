@@ -23,18 +23,6 @@ You have to have lf executable in PATH.
 - load `lf.kak` from your kakrc: `source path/to/lf.kak`
 - put `lf.kak` in your autoloads directory `~/.config/kak/autoload/`
 
-2. Add this snippet to lf config file: `~/.config/lf/lfrc`
-
-```
-# Kakoune integration
-
-&{{
-    if [ "$KAKLF" = "yes" ]; then
-        echo "eval -client $kak_client set-option global lf_id %{$id}" | kak -p "$kak_session"
-    fi
-}}
-```
-
 ## Usage
 
 Open/close lf with `:lf` command.
@@ -90,7 +78,8 @@ Check out [GH project](https://github.com/TeddyDD/kakoune-lf/projects/)
     - _FIX_ open paths with spaces
 - master:
     - **lf r10**
-    - __CHANGE__ move `kak-exit-hook` to Kakoune (**breaking** requires manual update of `lfrc`)
+    - __CHANGE__ move all configuration to Kakoune (**breaking** requires
+      manual update of `lfrc`). You can use this plugin without modyfing `lfrc`
     - _CHANGE_ remove `hatch_terminal` dependency, use built-in `terminal` command by default
     - _ADD_ display number of opened files in lf status line
     - _ADD_ `:lf-follow` command and `lf_follow` option that look for
