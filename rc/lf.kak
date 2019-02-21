@@ -102,8 +102,7 @@ define-command -hidden lf-set-start-dir %{
 
 define-command -hidden lf-spawn-new %{
     lf-set-start-dir
-    terminal sh -c "env kak_session=%val{session} kak_client=%val{client}\
-    lf -command '&echo eval -client $kak_client set-option global lf_id $id | kak -p $kak_session' ""%opt{lf_start_dir}"""
+    terminal sh -c "env kak_session=%val{session} kak_client=%val{client} lf -command '&echo eval -client $kak_client set-option global lf_id $id | kak -p $kak_session' ""%opt{lf_start_dir}"""
 }
 
 define-command -hidden lf-send-command \
