@@ -1,5 +1,11 @@
 # Kakoune lf
 
+# Deprecated
+
+Use [kaktree](https://github.com/andreyorst/kaktree)
+
+---
+
 kakoune-lf is plugin for [Kakoune] text editor. It integrates [lf] file manager
 as sidebar file browser.
 
